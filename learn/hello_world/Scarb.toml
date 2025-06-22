@@ -5,21 +5,30 @@ edition = "2024_07"
 
 # See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
 
+[cairo]
+enable-gas = false
+
 [dependencies]
-starknet = "2.11.4"
+# We do not want to use Starknet for the start.
+# starknet = "2.11.4"
+cairo_execute = "2.11.4"
 
-[dev-dependencies]
-snforge_std = "0.43.1"
-assert_macros = "2.11.4"
+[[target.executable]]
+name = "hello_world_main"
+function = "hello_world::hello_world::main"
 
-[[target.starknet-contract]]
-sierra = true
+#[dev-dependencies]
+#snforge_std = "0.43.1"
+#assert_macros = "2.11.4"
 
-[scripts]
-test = "snforge test"
+#[[target.starknet-contract]]
+#sierra = true
 
-[tool.scarb]
-allow-prebuilt-plugins = ["snforge_std"]
+# [scripts]
+# test = "snforge test"
+
+# [tool.scarb]
+# allow-prebuilt-plugins = ["snforge_std"]
 
 # Visit https://foundry-rs.github.io/starknet-foundry/appendix/scarb-toml.html for more information
 
